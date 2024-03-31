@@ -1,5 +1,5 @@
 {
-  "name": "node-redis",
+  "name": "redis-lite",
   "version": "1.1.0",
   "description": "This is a Redis implementation using nodejs. It's also a solution to this exercise in CodingChallenges https://codingchallenges.fyi/challenges/challenge-redis/",
   "bin": {
