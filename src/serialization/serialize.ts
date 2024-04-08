@@ -1,8 +1,12 @@
 import { DataType, ResponseError } from "./DataType";
 
-export function serialize(input: string[] | string | ResponseError | null) {
+export function serialize(input: string[] | string | number | ResponseError | null) {
   if(typeof input === 'string') {
     return `${DataType.SimpleString}${input}\r\n`
+  }
+
+  if(typeof input === 'number') {
+    return `${DataType.Integer}${input}\r\n`
   }
 
   if(input instanceof ResponseError) {
@@ -21,7 +25,8 @@ export function serialize(input: string[] | string | ResponseError | null) {
   let stringArray = `${DataType.Array}${length}\r\n`;
 
   let stringifiedItems = input.map((item) => {
-    return `${DataType.BulkString}${item.length}\r\n${item}\r\n`;
+    const parsedItem = typeof item === 'number' ? `${DataType.Integer}${item}` : item;
+    return `${DataType.BulkString}${item.length}\r\n${parsedItem}\r\n`;
   }).join('');
 
   return `${stringArray}${stringifiedItems}`

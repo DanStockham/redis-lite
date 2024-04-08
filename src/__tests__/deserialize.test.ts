@@ -11,6 +11,13 @@ describe('deserialize', () => {
     expect(deserialize(multipleStrings)).toBe(expectedMultiple);
   })
 
+  it('Should deserialize an integer', () => {
+    const input = ':123\r\n';
+    const expected = 123;
+
+    expect(deserialize(input)).toBe(expected);
+  })
+
   it('Should deserialize an single element array', () => {
     const input = '*1\r\n$4\r\nping';
     const ping = 'ping';  

@@ -38,6 +38,13 @@ describe('serialize', () => {
     expect(result).toEqual(expectedOutput);
   });
 
+  it('should handle a single number input', () => {
+    const input = 123;
+    const expectedOutput = ':123\r\n';
+    const result = serialize(input);
+    expect(result).toEqual(expectedOutput);
+  })
+
   it('should handle a single string input with special characters', () => {
     const input = 'hello, world|foo\\bar';
     const expectedOutput = '+hello, world|foo\\bar\r\n';

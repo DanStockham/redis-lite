@@ -1,3 +1,4 @@
+import { exists } from "./commands/exists";
 import { get } from "./commands/get";
 import { set } from "./commands/set";
 import { IStorageRepository } from "./repository/IStorageRepository";
@@ -11,7 +12,7 @@ export class CommandInvoker {
     this.repo = storeRepo || new StorageRepository();
   }
 
-  public async invokeCommand(bulkStrings: string[]): Promise<string | string[] | null> {
+  public async invokeCommand(bulkStrings: string[]): Promise<string | string[] | null | number> {
     const command = bulkStrings[0].toUpperCase();
     const args = bulkStrings.slice(1);
 
@@ -23,6 +24,8 @@ export class CommandInvoker {
         return 'OK';
       case 'GET':
         return get(args[0], this.repo);
+      case 'EXISTS':
+        return exists(args, this.repo);
       case 'ECHO':
         return args[0];
       default:

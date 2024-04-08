@@ -1,12 +1,16 @@
 import { DataType } from "./DataType";
 
 
-export function deserialize(input: string): string | string[] | null {
+export function deserialize(input: string): string | string[] | null | number {
   try {
     const firstByte = input[0];
 
     if (firstByte === DataType.SimpleString) {
       return input.split(DataType.SimpleString)[1].trim();
+    }
+
+    if (firstByte === DataType.Integer) {
+      return parseInt(input.split(DataType.Integer)[1]);
     }
 
 
