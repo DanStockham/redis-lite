@@ -87,8 +87,6 @@ Get the value of key. If the key does not exist the special value nil is returne
 
 ### EXISTS
 
-*NOT IMPLEMENTED*
-
 The `EXISTS` command checks if a key exists in the Redis database.
 
 ### DEL
