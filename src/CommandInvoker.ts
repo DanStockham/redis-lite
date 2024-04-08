@@ -1,3 +1,4 @@
+import { del } from "./commands/del";
 import { exists } from "./commands/exists";
 import { get } from "./commands/get";
 import { set } from "./commands/set";
@@ -26,6 +27,8 @@ export class CommandInvoker {
         return get(args[0], this.repo);
       case 'EXISTS':
         return exists(args, this.repo);
+      case 'DEL':
+        return del(args, this.repo);
       case 'ECHO':
         return args[0];
       default:

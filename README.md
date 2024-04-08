@@ -91,8 +91,6 @@ The `EXISTS` command checks if a key exists in the Redis database.
 
 ### DEL
 
-*NOT IMPLEMENTED*
-
 The `DEL` command deletes one or more keys from the Redis database.
 
 ### INCR
