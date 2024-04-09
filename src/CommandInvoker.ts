@@ -3,6 +3,8 @@ import { del } from "./commands/del";
 import { exists } from "./commands/exists";
 import { get } from "./commands/get";
 import { incr } from "./commands/incr";
+import { lpush } from "./commands/lpush";
+import { rpush } from "./commands/rpush";
 import { set } from "./commands/set";
 import { IStorageRepository } from "./repository/IStorageRepository";
 import StorageRepository from "./repository/StorageRepository";
@@ -35,6 +37,10 @@ export class CommandInvoker {
         return incr(args[0], this.repo);
       case 'DECR':
         return decr(args[0], this.repo);
+      case 'LPUSH':
+        return lpush(args[0], args.slice(1), this.repo);
+      case 'RPUSH':
+        return rpush(args[0], args.slice(1), this.repo);
       case 'ECHO':
         return args[0];
       default:

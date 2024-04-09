@@ -9,7 +9,8 @@ export enum DataType {
 export enum ErrorType {
   TypeError = 'TypeError',
   GenericError = 'Error',
-  UnknownCommand = 'UnknownCommand'
+  UnknownCommand = 'UnknownCommand',
+  WrongType = 'WRONGTYPE'
 }
 
 export class ResponseError extends Error {
