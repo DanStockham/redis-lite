@@ -3,13 +3,14 @@ import { Item } from "./Item";
 
 export class StorageRepository implements IStorageRepository{
   private storage: Map<string, Item>;
+  private defaultTTL: number = parseInt(process.env.DEFAULT_TTL ?? '300');
 
   constructor() {
     this.storage = new Map<string, Item>();
   }
 
   set(key: string, value: any, expiration?: number): void {
-    const dateUnixTime = expiration ?? new Date().getTime();
+    const dateUnixTime = expiration ?? new Date().getTime() + this.defaultTTL * 1000;
     this.storage.set(
       key, 
       new Item(value, dateUnixTime)

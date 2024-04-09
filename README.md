@@ -95,8 +95,6 @@ The `DEL` command deletes one or more keys from the Redis database.
 
 ### INCR
 
-*NOT IMPLEMENTED*
-
 The `INCR` command increments the value of a key by 1.
 
 ### DECR
