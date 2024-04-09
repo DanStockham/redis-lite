@@ -1,3 +1,4 @@
+import { decr } from "./commands/decr";
 import { del } from "./commands/del";
 import { exists } from "./commands/exists";
 import { get } from "./commands/get";
@@ -32,6 +33,8 @@ export class CommandInvoker {
         return del(args, this.repo);
       case 'INCR':
         return incr(args[0], this.repo);
+      case 'DECR':
+        return decr(args[0], this.repo);
       case 'ECHO':
         return args[0];
       default:
